@@ -23,11 +23,6 @@ jobs:
       with:
         lazarus-version: ${{ matrix.lazarus-versions }}
     - uses: actions/checkout@v2
-    - name: Unzip packages
-      run: unzip -q Packages/\*.zip -d Packages
-    - name: Install packages
-      run: |
-        lazbuild -qqq Packages/Indy10/indylaz.lpk
     - name: Build the Main Application
       run: lazbuild -B --bm="Release" "consopool.lpi"
     - uses: actions/upload-artifact@v2
